@@ -1,18 +1,18 @@
-# Solana Seal Key Server Frontend
+# Moodeng - Ethereum Seal Key Server Frontend
 
-This is a Next.js frontend application that demonstrates how to interact with the Solana Seal Key Server. It allows users to connect their Solana wallet, create a transaction with a Seal program instruction, and request decryption keys from the key server.
+This is a Next.js frontend application that demonstrates how to interact with the Ethereum Seal Key Server. It allows users to connect their Ethereum wallet, create Ethereum transactions, and request decryption keys from the key servers.
 
 ## Features
 
-- Solana wallet integration with Phantom, Solflare, and other wallets
-- Transaction creation with Seal program instructions
+- Ethereum wallet integration via viem and wagami
+- Transactions bundling and simulation via Tenderly
 - Key request and retrieval from the Seal key server
 - Responsive UI for desktop and mobile
 
 ## Prerequisites
 
 - Node.js 18+ and npm/pnpm
-- A Solana wallet (like Phantom or Solflare)
+- An Ethereum wallet (like Metamask)
 - Access to a running Seal key server
 
 ## Getting Started
@@ -36,11 +36,11 @@ pnpm dev
 
 ## How It Works
 
-1. **Connect Wallet**: Click the "Connect Wallet" button to connect your Solana wallet.
+1. **Connect Wallet**: Click the "Connect Wallet" button to connect your Ethereum wallet.
 
-2. **Create a session key**: Session key authorizes Seal key server to call `seal_approve` function a Solana Program for a period of time. So you won't need to sign for each request for a decryption key.
+2. **Create a session key**: Session key authorizes Seal key server to call `seal_approve` function a Ethereum contract for a period of time. So you won't need to sign for each request for a decryption key.
 
-2. **Enter Key ID**: Enter an encryption id that will be used in the Seal program instruction. (for starter example, id that starts with '123' will pass `seal_approve` check, so decryption will be successful)
+2. **Enter Key ID**: Enter an encryption id that will be used in the Ethereum transaction call to seal_approve method. (for starter example, id that starts with '123' will pass `seal_approve` check, so decryption will be successful)
 
 3. **Request Key**: Click the "Request Key" button to:
    - Create a transaction with one or more `seal_approve` instructions
@@ -64,6 +64,6 @@ The app demonstrates a complete flow for interacting with the Seal key server:
 
 You can modify the application to suit your specific needs:
 
-- Update the `.env` for `STARTER_PROGRAM_ID` or `WHITELIST_PROGRAM_ID` with your own Solana Program ID to try out with your own `seal_approve` logic
+- Update the `.env` for `STARTER_CONTRACT_ADDRESS` or `WHITELIST_CONTRACT_ADDRESS` with your own contract addresses to try out with your own `seal_approve` logic
 - Read more about **identity based encryption** (https://github.com/MystenLabs/seal/blob/main/Design.md) to develop your own access policy patterns
 
