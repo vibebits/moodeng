@@ -57,7 +57,6 @@ mod externals;
 mod signed_message;
 mod types;
 mod valid_ptb;
-mod solana;
 mod ethereum;
 
 mod metrics;
@@ -667,7 +666,6 @@ async fn main() -> Result<()> {
             axum::Router::new()
                 .route("/v1/fetch_key", post(handle_fetch_key))
                 .route("/v1/service", get(handle_get_service))
-                // .route("/v1/fetch_key_solana", post(solana::handler::handle_fetch_key))
                 .route("/v1/fetch_key_ethereum", post(ethereum::handler::handle_fetch_key))
                 .layer(from_fn_with_state(state.clone(), handle_request_headers))
                 .layer(map_response(add_response_headers))
